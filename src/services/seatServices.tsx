@@ -11,10 +11,24 @@ export const fetchInitial = (): any  => {
 
 export const fetchMetaData = (): any  => {
     let f :Array<any> = [];
-        metadata.forEach(mData => {
-            console.log(mData)
-            f.push(mData.floorID)
-        });
+    metadata.forEach(mData => {
+            // console.log(mData)
+        f.push(mData.floorID)
+    });
+    return f;
+}
+
+export const fetchSeatsMetaData = (floor:String): any  => {
+    let f :Array<any> = [];
+    metadata.forEach(mData => {
+        mData.seats.forEach(s=>{
+            if(mData.floorID===floor)
+            {
+                if(!s.isSelected)
+                    {f.push(s.seatID)}                
+            }
+            }); 
+    });
     return f;
 }
 
